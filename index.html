@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Woner샘 논술 - AI 수리논술 첨삭</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Noto Sans KR', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .banner-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .homepage-container { display: none; }
+    .homepage-container.active { display: block; }
+    .banner-container.hidden { display: none; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+
+  <!-- ==================== 배너 화면 ==================== -->
+  <div id="bannerScreen" class="banner-container px-4">
+    <div class="text-center max-w-md mx-auto">
+      <!-- 배너 카드 -->
+      <div 
+        onclick="showHomepage()" 
+        class="bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 rounded-3xl p-1 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-2xl"
+      >
+        <div class="bg-slate-900 rounded-3xl p-8">
+          <!-- 로고 -->
+          <div class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl font-black text-slate-900">
+            W
+          </div>
+          
+          <!-- 타이틀 -->
+          <h1 class="text-2xl font-bold mb-2">Woner샘 논술</h1>
+          <p class="text-yellow-400 font-semibold mb-4">AI 수리논술 첨삭 서비스</p>
+          
+          <!-- 키워드 -->
+          <div class="flex flex-wrap justify-center gap-2 mb-6">
+            <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-xs">이투스 출신</span>
+            <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs">대성마이맥</span>
+            <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs">IB 연구소장</span>
+          </div>
+          
+          <!-- 슬로건 -->
+          <p class="text-slate-300 text-sm mb-6">
+            "20년 노하우 + AI = 정밀 진단"
+          </p>
+          
+          <!-- CTA -->
+          <div class="bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 px-6 py-3 rounded-full font-bold inline-flex items-center gap-2">
+            <span>홈페이지 보기</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 하단 안내 -->
+      <p class="text-slate-500 text-sm mt-6">
+        👆 배너를 탭하세요
+      </p>
+    </div>
+  </div>
+
+  <!-- ==================== 홈페이지 화면 ==================== -->
+  <div id="homepageScreen" class="homepage-container">
+    
+    <!-- 뒤로가기 버튼 -->
+    <button 
+      onclick="showBanner()" 
+      class="fixed top-4 left-4 z-50 bg-slate-800/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold border border-white/20 flex items-center gap-2"
+    >
+      ← 배너
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2 ml-16">
+          <span class="text-xl">🤖</span>
+          <span class="text-base font-bold">Woner샘</span>
+        </div>
+        <a href="#contact" class="bg-yellow-500 hover:bg-yellow-400 text-slate-900 px-3 py-1.5 rounded-full text-xs font-bold">
+          무료 체험
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-20 pb-12 px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-400 px-3 py-1.5 rounded-full text-xs mb-4">
+          🤖 AI + 20년 교육 전문가
+        </div>
+        
+        <h1 class="text-2xl font-bold mb-4 leading-tight">
+          <span class="text-yellow-400">AI 시대,</span><br>
+          교육도 진화해야 합니다
+        </h1>
+        
+        <p class="text-sm text-slate-300 mb-3">
+          "답만 맞으면 끝? <span class="text-yellow-400 font-semibold">논리적 비약까지 잡아냅니다</span>"
+        </p>
+        
+        <p class="text-slate-400 text-xs mb-6">
+          이투스·대성마이맥 출신 | IB 연구소장
+        </p>
+
+        <a href="#contact" class="inline-block bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 px-6 py-3 rounded-full font-bold text-sm">
+          ✨ 첫 첨삭 무료
+        </a>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 px-4 bg-slate-800/50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-xl font-bold mb-2">Woner샘 강원호</h2>
+          <p class="text-slate-400 text-sm">AI를 활용하는 20년 교육 전문가</p>
+        </div>
+
+        <!-- 프로필 -->
+        <div class="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-5 border border-white/10 mb-4">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-14 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-xl font-bold text-slate-900">
+              W
+            </div>
+            <div>
+              <h3 class="text-lg font-bold">강원호</h3>
+              <p class="text-yellow-400 text-sm">Woner Kang</p>
+            </div>
+          </div>
+          
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-2">
+              <span>🎓</span>
+              <span>연세대학교 졸업</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span>🏆</span>
+              <span>20년+ 교육 경력</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span>🌏</span>
+              <span>DRM IB 연구소장</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 경력 -->
+        <div class="bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl p-5 border border-white/10">
+          <h3 class="font-bold mb-4">🏆 주요 경력</h3>
+          
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2"></div>
+              <div>
+                <p class="font-semibold">이투스 / 대성마이맥</p>
+                <p class="text-slate-400 text-xs">온라인 수리논술 강사</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2"></div>
+              <div>
+                <p class="font-semibold">이투스 Firstree 집필진</p>
+                <p class="text-slate-400 text-xs">수리논술</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2"></div>
+              <div>
+                <p class="font-semibold">QED수리논술 출제·채점위원</p>
+                <p class="text-slate-400 text-xs">현재</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2"></div>
+              <div>
+                <p class="font-semibold">Threads @kangwoner</p>
+                <p class="text-slate-400 text-xs">매일 AI 교육소식 · AGI 교육 연재중</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2"></div>
+              <div>
+                <p class="font-semibold">DRM IB / Meta Education</p>
+                <p class="text-slate-400 text-xs">연구소장 (현재)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 신뢰 배지 -->
+        <div class="grid grid-cols-4 gap-2 mt-4">
+          <div class="bg-slate-700/50 rounded-xl p-3 text-center border border-white/10">
+            <div class="text-xl mb-1">🎓</div>
+            <div class="text-yellow-400 font-bold text-[10px]">연세대</div>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-3 text-center border border-white/10">
+            <div class="text-xl mb-1">📺</div>
+            <div class="text-yellow-400 font-bold text-[10px]">이투스</div>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-3 text-center border border-white/10">
+            <div class="text-xl mb-1">✍️</div>
+            <div class="text-yellow-400 font-bold text-[10px]">QED</div>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-3 text-center border border-white/10">
+            <div class="text-xl mb-1">🌏</div>
+            <div class="text-yellow-400 font-bold text-[10px]">IB</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-12 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-xl font-bold mb-2">대상별 프로그램</h2>
+          <p class="text-slate-400 text-sm">맞춤형 수학 교육</p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- 고3/N수생 -->
+          <div class="bg-gradient-to-br from-yellow-900/30 to-slate-800 rounded-2xl p-5 border border-yellow-500/30">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-yellow-500/20 rounded-full flex items-center justify-center">
+                🎯
+              </div>
+              <div>
+                <h3 class="font-bold text-yellow-400 text-sm">고3 · N수생</h3>
+                <p class="text-slate-400 text-xs">입시 논술 집중</p>
+              </div>
+            </div>
+            <h4 class="font-bold mb-2">Genius 대학별 논술</h4>
+            <p class="text-slate-400 text-xs mb-2">수리논술 AI 첨삭</p>
+            <ul class="space-y-1 text-xs text-slate-300">
+              <li>✓ AI 기반 정밀 채점</li>
+              <li>✓ 5회 이상 발전과정 탐색</li>
+              <li>✓ 맞춤형 학습 로드맵</li>
+            </ul>
+          </div>
+
+          <!-- 고1,2 -->
+          <div class="bg-gradient-to-br from-blue-900/30 to-slate-800 rounded-2xl p-5 border border-blue-500/30">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                📘
+              </div>
+              <div>
+                <h3 class="font-bold text-blue-400 text-sm">고1 · 고2</h3>
+                <p class="text-slate-400 text-xs">서술형 대비</p>
+              </div>
+            </div>
+            <h4 class="font-bold mb-2">Gauss Project</h4>
+            <p class="text-slate-400 text-xs mb-2">개념원리 탐구 서술수학</p>
+            <ul class="space-y-1 text-xs text-slate-300">
+              <li>✓ 개념의 원리부터 탐구</li>
+              <li>✓ 서술형 평가 완벽 대비</li>
+              <li>✓ 2028 대입 선제 준비</li>
+            </ul>
+          </div>
+
+          <!-- 중학생 -->
+          <div class="bg-gradient-to-br from-green-900/30 to-slate-800 rounded-2xl p-5 border border-green-500/30">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
+                💡
+              </div>
+              <div>
+                <h3 class="font-bold text-green-400 text-sm">중학생</h3>
+                <p class="text-slate-400 text-xs">수학적 사고력</p>
+              </div>
+            </div>
+            <h4 class="font-bold mb-2">아르키메 프로젝트</h4>
+            <p class="text-slate-400 text-xs mb-2">원리 탐색, 수학자 되기</p>
+            <ul class="space-y-1 text-xs text-slate-300">
+              <li>✓ 수학 원리의 본질 탐구</li>
+              <li>✓ 수학자처럼 생각하기</li>
+              <li>✓ 논리적 사고력 기초</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI 채점 예시 -->
+    <section id="examples" class="py-12 px-4 bg-slate-800/50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-xl font-bold mb-2">실제 AI 채점 결과</h2>
+          <p class="text-slate-400 text-sm">100점~65점 다양한 결과</p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- 아주대 100점 -->
+          <div class="bg-slate-800 rounded-2xl p-5 border border-yellow-500/30">
+            <div class="flex justify-between items-center mb-3">
+              <div>
+                <h3 class="font-bold text-sm">아주대 2022 모의</h3>
+                <span class="bg-gradient-to-r from-yellow-400 to-orange-500 px-2 py-0.5 rounded-full text-white text-[10px] font-bold">만점</span>
+              </div>
+              <div class="text-3xl font-bold text-yellow-400">100</div>
+            </div>
+            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+              <div class="h-full bg-green-500 w-full"></div>
+            </div>
+            <p class="text-xs text-slate-400 mt-2">✓ 수학적 귀납법 완벽 · 논증 우수</p>
+          </div>
+
+          <!-- 서강대 81점 -->
+          <div class="bg-slate-800 rounded-2xl p-5 border border-blue-500/30">
+            <div class="flex justify-between items-center mb-3">
+              <div>
+                <h3 class="font-bold text-sm">서강대 2025 모의</h3>
+                <span class="bg-gradient-to-r from-blue-400 to-cyan-500 px-2 py-0.5 rounded-full text-white text-[10px] font-bold">우수</span>
+              </div>
+              <div class="text-3xl font-bold text-blue-400">81</div>
+            </div>
+            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+              <div class="h-full bg-blue-500 w-4/5"></div>
+            </div>
+            <p class="text-xs text-slate-400 mt-2">△ 증감표 불명확 · 서술 보완 필요</p>
+          </div>
+
+          <!-- 건국대 65점 -->
+          <div class="bg-slate-800 rounded-2xl p-5 border border-orange-500/30">
+            <div class="flex justify-between items-center mb-3">
+              <div>
+                <h3 class="font-bold text-sm">건국대 2026 모의</h3>
+                <span class="bg-gradient-to-r from-orange-500 to-red-500 px-2 py-0.5 rounded-full text-white text-[10px] font-bold">개선필요</span>
+              </div>
+              <div class="text-3xl font-bold text-orange-400">65</div>
+            </div>
+            <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+              <div class="h-full bg-yellow-500 w-2/3"></div>
+            </div>
+            <p class="text-xs text-slate-400 mt-2">✗ 논리적 비약 발생 · 계산 오류</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 출강 학원 -->
+    <section id="offline" class="py-12 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-xl font-bold mb-2">오프라인 출강</h2>
+          <p class="text-slate-400 text-sm">전국 5개 학원 출강</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-slate-700/50 rounded-xl p-4 border border-white/10 text-center">
+            <div class="text-2xl mb-2">🏫</div>
+            <h3 class="font-bold text-sm">EMK 학원</h3>
+            <p class="text-slate-400 text-xs">서울 압구정</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-4 border border-white/10 text-center">
+            <div class="text-2xl mb-2">🏫</div>
+            <h3 class="font-bold text-sm">FMA 수학</h3>
+            <p class="text-slate-400 text-xs">서울 대치동</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-4 border border-white/10 text-center">
+            <div class="text-2xl mb-2">🏫</div>
+            <h3 class="font-bold text-sm">필즈 수학</h3>
+            <p class="text-slate-400 text-xs">서울 반포</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-4 border border-white/10 text-center">
+            <div class="text-2xl mb-2">🏫</div>
+            <h3 class="font-bold text-sm">한박사논술</h3>
+            <p class="text-slate-400 text-xs">경기 영통</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-4 border border-white/10 text-center col-span-2">
+            <div class="text-2xl mb-2">🏫</div>
+            <h3 class="font-bold text-sm">아카데미 캠퍼스</h3>
+            <p class="text-slate-400 text-xs">인천 송도</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 신청 프로세스 -->
+    <section class="py-12 px-4 bg-slate-800/50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-xl font-bold mb-2">신청 방법</h2>
+          <p class="text-slate-400 text-sm">간단한 4단계</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-slate-700/50 rounded-xl p-4 text-center border border-white/10">
+            <div class="w-10 h-10 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-2 text-yellow-400 font-bold">1</div>
+            <h3 class="font-bold text-sm mb-1">카톡 신청</h3>
+            <p class="text-slate-400 text-xs">@Woner샘논술</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-4 text-center border border-white/10">
+            <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-2 text-blue-400 font-bold">2</div>
+            <h3 class="font-bold text-sm mb-1">문제 제공</h3>
+            <p class="text-slate-400 text-xs">대학별 기출</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-4 text-center border border-white/10">
+            <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2 text-green-400 font-bold">3</div>
+            <h3 class="font-bold text-sm mb-1">풀이 제출</h3>
+            <p class="text-slate-400 text-xs">손글씨/타이핑</p>
+          </div>
+          <div class="bg-slate-700/50 rounded-xl p-4 text-center border border-white/10">
+            <div class="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2 text-purple-400 font-bold">4</div>
+            <h3 class="font-bold text-sm mb-1">AI 채점</h3>
+            <p class="text-slate-400 text-xs">상세 피드백</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl p-8 text-center">
+          <p class="text-slate-800 text-sm font-semibold mb-2">이투스·대성마이맥 출신 | IB 연구소장</p>
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">첫 첨삭 무료!</h2>
+          <p class="text-slate-700 text-sm mb-6">
+            20년 경력 Woner샘 AI가 직접 채점
+          </p>
+          
+          <div class="bg-white/20 backdrop-blur rounded-2xl p-6 mb-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-center gap-3">
+                <span class="text-2xl">💬</span>
+                <div class="text-left">
+                  <p class="text-slate-800 font-bold">카카오톡</p>
+                  <p class="text-slate-900 text-xl font-black">@Woner샘논술</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-center gap-3">
+                <span class="text-2xl">✉️</span>
+                <div class="text-left">
+                  <p class="text-slate-800 font-bold">이메일</p>
+                  <p class="text-slate-900 font-semibold">kangwoner@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-slate-800 text-xs">
+            "첫 첨삭 무료" 메시지 보내주세요!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SNS -->
+    <section class="py-12 px-4 bg-slate-800/50">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-lg font-bold mb-6">Woner샘 SNS</h2>
+        
+        <div class="grid grid-cols-3 gap-3">
+          <a href="https://www.threads.net/@kangwoner" target="_blank" class="bg-slate-700/50 rounded-xl p-4 border border-white/10">
+            <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-2 text-white font-bold">@</div>
+            <p class="text-xs font-bold">Threads</p>
+            <p class="text-slate-400 text-[10px]">매일 AI 교육소식</p>
+          </a>
+          <a href="#" class="bg-slate-700/50 rounded-xl p-4 border border-white/10">
+            <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-2 text-white">▶</div>
+            <p class="text-xs font-bold">YouTube</p>
+            <p class="text-slate-400 text-[10px]">Woner Kang</p>
+          </a>
+          <a href="#" class="bg-slate-700/50 rounded-xl p-4 border border-white/10">
+            <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-2 text-slate-900">💬</div>
+            <p class="text-xs font-bold">카카오톡</p>
+            <p class="text-slate-400 text-[10px]">@Woner샘논술</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-white/10 text-center">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <span class="text-xl">🤖</span>
+        <span class="font-bold">Woner샘 논술</span>
+      </div>
+      <p class="text-slate-400 text-xs mb-2">
+        AI 시대, 교육도 진화해야 합니다
+      </p>
+      <p class="text-slate-500 text-xs">
+        © 2025 Woner샘 논술. All rights reserved.
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function showHomepage() {
+      document.getElementById('bannerScreen').classList.add('hidden');
+      document.getElementById('homepageScreen').classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function showBanner() {
+      document.getElementById('bannerScreen').classList.remove('hidden');
+      document.getElementById('homepageScreen').classList.remove('active');
+    }
+  </script>
+
+</body>
+</html>
